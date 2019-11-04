@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<h1>hello</h1>
+<table>
+    {% for service in services %}
+
+        <tr>
+            <td>{{ service }} </td>
+            <td><a href="{% url "delete" service.name %}"><input type="button" id="delete" name="delete" value="delete"></a>
+            </td>
+            <td><input type="button" id="modifiko" name="modifiko" value="modifiko"></td>
+        </tr>
+
+    {% endfor %}
+</table>
+</body>
+</html>

@@ -15,7 +15,13 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path
+from service import views
 
 urlpatterns = [
     path('admin/', admin.site.urls),
+    path('', views.sherbimet, name="services"),
+    path('<str:name>/', views.delete, name="delete"),
+    path('add', views.add, name="add"),
+    path('form', views.form, name="form"),
+    path('form/<int:pk>',views.update, name="update")
 ]
