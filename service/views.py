@@ -19,35 +19,53 @@ from django.views import generic
 #    def get_queryset(self):
 #       return Service.objects.order_by('service_type_id')[:5]
 
-def sherbimet(request):
+def services(request):
     context = {
         "services": Service.objects.all()
     }
     return render(request, 'service/service_list.html', context)
 
 
-def delete(request, name):
-    obj = get_object_or_404(Service, name=name)
+def delete(request, pk):
+    obj = get_object_or_404(Service, id=pk)
     obj.delete()
+    # obj.save()
     context = {
         "services": Service.objects.all()
     }
     return render(request, 'service/service_list.html', context)
 
 
-def form(request):
+def addform(request):
+    obj=ServiceType.objects.all()
     context = {
-
+        "object":obj
     }
-    return render(request, "service/create_service.html", context)
+    return render(request, "service/add_form.html", context)
 
 
-def add(request, ):
-    Service.objects.create(name=request.POST['name'])
+def updateform(request, pk):
+    obj = Service.objects.get(id=pk)
+    obj1 = ServiceType.objects.all()
+    context = {
+        "object": obj,
+        "object1": obj1
+    }
+    return render(request, "service/update_form.html", context)
+
+
+def add(request):
+    # obj = Service.objects.create(name=request.POST['name'],service_type=ServiceType.objects.get(name=request.POST['service_type']))
+    obj = Service.objects.create(name=request.POST['name'], service_type_id=request.POST['service_type'])
+
+    obj.save()
     return HttpResponseRedirect(reverse_lazy('services'))
 
 
 def update(request, pk):
     obj = Service.objects.get(id=pk)
+    obj.name = request.POST['name']
+    obj.service_type_id=request.POST['service_type']
+    obj.save()
 
-    pass
+    return HttpResponseRedirect(reverse_lazy('services'))

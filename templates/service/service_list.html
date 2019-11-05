@@ -10,13 +10,29 @@
     {% for service in services %}
 
         <tr>
+
             <td>{{ service }} </td>
-            <td><a href="{% url "delete" service.name %}"><input type="button" id="delete" name="delete" value="delete"></a>
+            <td>
+                <a href="{% url "delete" service.id %}">
+                    <button>delete</button>
+                </a>
             </td>
-            <td><input type="button" id="modifiko" name="modifiko" value="modifiko"></td>
+            <td>
+                <a href="{% url "updateform" service.id %}">
+                    <input type="button" id="modifiko" name="modifiko" value="modifiko">
+                </a>
+            </td>
+            <td>
+
+            </td>
+
+
         </tr>
 
     {% endfor %}
+    <a href="{% url "addform" %}">
+        <button>add</button>
+    </a>
 </table>
 </body>
 </html>

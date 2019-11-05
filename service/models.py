@@ -6,6 +6,8 @@ from django.db import models
 class ServiceType(models.Model):
     name = models.CharField(max_length=20)
 
+    def __str__(self):
+        return self.name
 
 class Service(models.Model):
     name = models.CharField(max_length=50)

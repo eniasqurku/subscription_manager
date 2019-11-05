@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<form method="post" action="{% url  "update"  object.id %}">
+    {% csrf_token %}
+    <input type="text" id="name" name="name" value="{{ object.name }}">
+    <label for="name">Service Name</label>
+    <select id="service_type" name="service_type">
+        {% for obj in object1 %}
+            <option value="{{ obj.id }}" {% if obj.id == object.service_type_id %} selected {% endif %}>{{ obj.name }}</option>
+        {% endfor %}
+    </select>
+    <label for="service_type">Service Type</label>
+    <input type="submit" value="save">
+</form>
+</body>
+</html>
