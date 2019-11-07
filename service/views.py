@@ -1,8 +1,7 @@
 from django.http import HttpResponseRedirect
 from django.shortcuts import render, get_object_or_404
 from django.urls import reverse_lazy
-from django.views import generic
-from django.views.generic.edit import DeleteView
+from django.views.generic import ListView, DeleteView
 
 from .models import Service, ServiceType
 
@@ -72,19 +71,18 @@ def update(request, pk):
     return HttpResponseRedirect(reverse_lazy('services'))
 
 
-class Services(generic.ListView):
+class ServiceListView(ListView):
     template_name = 'service/service_list.html'
     context_object_name = "services"
     queryset = Service.objects.all()
 
 
-class Delete(DeleteView):
-    template_name = 'service/service_list.html'
-    success_url = reverse_lazy('services')
+class ServiceDeleteView(DeleteView):
+    success_url = reverse_lazy('service:list')
     model = Service
 
-    def delete(self, request, *args, **kwargs):
-        newbie = self.get_object()
-        newbie.delete()
-        newbie.save()
-        return HttpResponseRedirect(self.success_url)
+    # def delete(self, request, *args, **kwargs):
+    #     newbie = self.get_object()
+    #     newbie.delete()
+    #     newbie.save()
+    #     return HttpResponseRedirect(self.success_url)

@@ -13,10 +13,10 @@
 
             <td>{{ service }} </td>
             <td>
-                <a href="{% url "delete" service.id %}">
-{#                    <button>delete</button>#}
-                    delete
-                </a>
+                <form method="post" action="{% url 'service:delete' service.id %}">
+                    {% csrf_token %}
+                    <button type="submit">Delete</button>
+                </form>
             </td>
             <td>
                 <a href="{% url "updateform" service.id %}">
