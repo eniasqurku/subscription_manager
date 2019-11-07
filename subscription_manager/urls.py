@@ -18,17 +18,21 @@ from django.contrib.auth.views import LoginView
 from django.urls import path
 from service import views
 import service.urls as service_urls
+import subscription.urls as subscription_urls
+import  agent.urls as customer_urls
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    # path('', views.services, name="services"),
+    # path('', 'bas'),
     # path('', views.Services.as_view(), name="services"),
     # path('delete/<int:pk>/', views.Delete.as_view(), name="delete"),
-    path('add', views.add, name="add"),
-    path('addform/', views.addform, name="addform"),
-    path('updateform/<int:pk>', views.updateform, name="updateform"),
-    path('update/<int:pk>', views.update, name="update"),
-    path('login', LoginView.as_view(template_name='agent/login.html'))
+    # path('add', views.add, name="add"),
+    # path('addform/', views.addform, name="addform"),
+    # path('updateform/<int:pk>', views.updateform, name="updateform"),
+    # path('update/<int:pk>', views.update, name="update"),
+    # path('login', LoginView.as_view(template_name='agent/login.html'))
 ]
 
 urlpatterns += service_urls.urlpatterns
+urlpatterns += subscription_urls.urlpatterns
+urlpatterns += customer_urls.urlpatterns

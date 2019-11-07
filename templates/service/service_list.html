@@ -5,7 +5,6 @@
     <title>Title</title>
 </head>
 <body>
-<h1>hello</h1>
 <table>
     {% for service in services %}
 
@@ -19,19 +18,16 @@
                 </form>
             </td>
             <td>
-                <a href="{% url "updateform" service.id %}">
-                    <input type="button" id="modifiko" name="modifiko" value="modifiko">
-                </a>
+                <form method="post" action="{% url 'service:update' service.id %}">
+                    {% csrf_token %}
+                    <button type="submit">Update</button>
+                </form>
             </td>
-            <td>
-
-            </td>
-
 
         </tr>
 
     {% endfor %}
-    <a href="{% url "addform" %}">
+    <a href="{% url 'service:create' %}">
         <button>add</button>
     </a>
 </table>

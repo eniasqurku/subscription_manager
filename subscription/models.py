@@ -5,6 +5,12 @@ from service.models import Service
 
 # Create your models here.
 class Subscription(models.Model):
+    class Meta:
+        verbose_name='abonimi'
+        verbose_name_plural='abonimet'
+        db_table='Subscription'
+
+
     start_date = models.DateField('Data e fillimit')
     end_date = models.DateField('Data e mbarimit')
     date_created = models.DateTimeField(auto_now_add=True)
