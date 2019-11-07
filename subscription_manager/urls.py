@@ -20,8 +20,9 @@ from service import views
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('', views.services, name="services"),
-    path('<int:pk>/', views.delete, name="delete"),
+    # path('', views.services, name="services"),
+    path('', views.Services.as_view(), name="services"),
+    path('<int:pk>/', views.Delete.as_view(), name="delete"),
     path('add', views.add, name="add"),
     path('addform/', views.addform, name="addform"),
     path('updateform/<int:pk>', views.updateform, name="updateform"),
