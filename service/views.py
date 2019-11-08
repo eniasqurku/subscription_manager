@@ -70,14 +70,14 @@ def updateform(request, pk):
 
 
 class ServiceListView(ListView):
-    template_name = 'service/service_list.html'
+    template_name = 'service/service_list1.html'
     context_object_name = 'services'
     queryset = Service.objects.all()
 
 
 class ServiceCreateView(CreateView):
     success_url = reverse_lazy('service:list')
-    template_name = 'service/create_form1.html'
+    template_name = 'service/create_form.html'
     form_class = ServiceForm
     queryset = Service.objects.all()
 
@@ -89,7 +89,7 @@ class ServiceCreateView(CreateView):
 
 class ServiceUpdateView(UpdateView):
     success_url = reverse_lazy('service:list')
-    template_name = 'service/update_form1.html'
+    template_name = 'service/update_form.html'
     form_class = ServiceForm
     queryset = Service.objects.all()
 

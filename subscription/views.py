@@ -6,7 +6,7 @@ from .forms import SubscriptionForm
 # Create your views here.
 
 class SubscriptionListView(ListView):
-    template_name = 'subscription/subscription_list.html'
+    template_name = 'subscription/subscription_list1.html'
     queryset = Subscription.objects.all()
 
 class SubscriptionCreateView(CreateView):

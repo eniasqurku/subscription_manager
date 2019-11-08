@@ -1,0 +1,45 @@
+{% extends 'base.html' %}
+{% block content %}
+    <div class="container">
+        <h2>Subscription List</h2>
+        <div class="row">
+
+            <a href="{% url 'subscription:create' %}" style="float: right">
+                <button>Add new subscription</button>
+            </a>
+        </div>
+        <div class="row">
+            <table border="1" style="border-collapse: collapse">
+                <tr>
+                    <td>Customer Name</td>
+                    <td>Service</td>
+                    <td>Start Date</td>
+                    <td>End Date</td>
+                    <td>Date Created</td>
+                    <td>Update</td>
+                    <td>Delete</td>
+
+                </tr>
+                {% for subscription in object_list %}
+                    <tr>
+                        <td>{{ subscription.customer }}</td>
+                        <td>{{ subscription.service }}</td>
+                        <td>{{ subscription.start_date }}</td>
+                        <td>{{ subscription.end_date }}</td>
+                        <td>{{ subscription.date_created }}</td>
+                        <td>
+                            <form method="post" action="{% url 'subscription:update' subscription.id %}">{% csrf_token %}
+                                <button type="submit">Update</button>
+                            </form>
+                        </td>
+                        <td>
+                            <form method="post" action="{% url 'subscription:delete' subscription.id %}">{% csrf_token %}
+                                <button type="submit">Delete</button>
+                            </form>
+                        </td>
+                    </tr>
+                {% endfor %}
+            </table>
+        </div>
+    </div>
+{% endblock %}

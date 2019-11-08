@@ -1,38 +1,44 @@
-<div class="container">
-    <h2>Customer List</h2>
-    <div class="row">
-        <a href="{% url 'customer:create' %}" style="float: right" >+ Add new customer</a>
-    </div>
-    <div class="row">
-        <table border="1" style="border-collapse: collapse">
-            <tr>
-                <td>First Name</td>
-                <td>Last Name</td>
-                <td>Phone</td>
-                <td>email</td>
-                <td>address</td>
-                <td>Update</td>
-                <td>Delete</td>
-            </tr>
-            {% for customer in object_list %}
+{% extends 'base.html' %}
+{% block content %}
+    <div class="container">
+        <h2>Customer List</h2>
+        <div class="row">
+
+            <a href="{% url 'customer:create' %}" style="float: right">
+                <button>Add new customer</button>
+            </a>
+        </div>
+        <div class="row">
+            <table border="1" style="border-collapse: collapse">
                 <tr>
-                    <td>{{ customer.name }}</td>
-                    <td>{{ customer.nuis }}</td>
-                    <td>{{ customer.phone }}</td>
-                    <td>{{ customer.email }}</td>
-                    <td>{{ customer.address }}</td>
-                    <td>
-                        <form method="post" action="{% url 'customer:update' customer.id %}">{% csrf_token %}
-                            <button type="submit">Update</button>
-                        </form>
-                    </td>
-                    <td>
-                        <form method="post" action="{% url 'customer:delete' customer.id %}">{% csrf_token %}
-                            <button type="submit">Delete</button>
-                        </form>
-                    </td>
+                    <td>First Name</td>
+                    <td>Last Name</td>
+                    <td>Phone</td>
+                    <td>email</td>
+                    <td>address</td>
+                    <td>Update</td>
+                    <td>Delete</td>
                 </tr>
-            {% endfor %}
-        </table>
+                {% for customer in object_list %}
+                    <tr>
+                        <td>{{ customer.name }}</td>
+                        <td>{{ customer.nuis }}</td>
+                        <td>{{ customer.phone }}</td>
+                        <td>{{ customer.email }}</td>
+                        <td>{{ customer.address }}</td>
+                        <td>
+                            <form method="post" action="{% url 'customer:update' customer.id %}">{% csrf_token %}
+                                <button type="submit">Update</button>
+                            </form>
+                        </td>
+                        <td>
+                            <form method="post" action="{% url 'customer:delete' customer.id %}">{% csrf_token %}
+                                <button type="submit">Delete</button>
+                            </form>
+                        </td>
+                    </tr>
+                {% endfor %}
+            </table>
+        </div>
     </div>
-</div>
+{% endblock %}

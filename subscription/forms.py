@@ -1,4 +1,4 @@
-from django.forms import ModelForm
+from django.forms import ModelForm, Widget, SelectDateWidget
 from .models import Subscription
 
 
@@ -11,3 +11,7 @@ class SubscriptionForm(ModelForm):
             'service',
             'customer'
         ]
+        widgets = {
+            'start_date': SelectDateWidget(),
+            'end_date' : SelectDateWidget()
+        }
