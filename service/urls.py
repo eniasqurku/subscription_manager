@@ -1,13 +1,11 @@
 from django.urls import path, include
 from django.contrib.auth.decorators import login_required
-from service.views import ServiceListView, ServiceDeleteView, ServiceCreateView, ServiceUpdateView
+from .views import ServiceUpdateDeleteView, ServiceCreateListView
 
 service_urls = (
     [
-        path('', login_required(ServiceListView.as_view()), name='list'),
-        path('delete/<int:pk>/', login_required(ServiceDeleteView.as_view()), name='delete'),
-        path('create', login_required(ServiceCreateView.as_view()), name='create'),
-        path('update/<int:pk>/', login_required(ServiceUpdateView.as_view()), name='update')
+        path('', ServiceCreateListView.as_view(), name='create_list'),
+        path('<int:pk>/', ServiceUpdateDeleteView.as_view(), name='detail')
     ], 'service')
 
 urlpatterns = [

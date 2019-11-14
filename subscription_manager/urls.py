@@ -21,15 +21,10 @@ from service import views
 import service.urls as service_urls
 import subscription.urls as subscription_urls
 import agent.urls as customer_urls
-from django.contrib.auth.decorators import login_required
-from login import views
-from django.contrib.auth.views import LoginView, logout_then_login
+
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('', LoginView.as_view(template_name='agent/login.html'), name='login'),
-    path('home/', login_required(views.HomeView.as_view()), name='home'),
-    path('logout/', logout_then_login, name='logout'),
 
 ]
 
