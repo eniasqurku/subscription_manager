@@ -28,12 +28,13 @@
                         <td>{{ subscription.end_date }}</td>
                         <td>{{ subscription.date_created }}</td>
                         <td>
-                            <form method="post" action="{% url 'subscription:update' subscription.id %}">{% csrf_token %}
+                            <form action="{% url 'subscription:update' subscription.id %}">{% csrf_token %}
                                 <button type="submit">Update</button>
                             </form>
                         </td>
                         <td>
-                            <form method="post" action="{% url 'subscription:delete' subscription.id %}">{% csrf_token %}
+                            <form method="post"
+                                  action="{% url 'subscription:delete' subscription.id %}">{% csrf_token %}
                                 <button type="submit">Delete</button>
                             </form>
                         </td>

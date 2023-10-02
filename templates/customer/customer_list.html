@@ -27,7 +27,7 @@
                         <td>{{ customer.email }}</td>
                         <td>{{ customer.address }}</td>
                         <td>
-                            <form method="post" action="{% url 'customer:update' customer.id %}">{% csrf_token %}
+                            <form action="{% url 'customer:update' customer.id %}">{% csrf_token %}
                                 <button type="submit">Update</button>
                             </form>
                         </td>

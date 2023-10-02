@@ -23,7 +23,7 @@
                         <td>{{ service.service_type }}</td>
 
                         <td>
-                            <form method="post" action="{% url 'service:update' service.id %}">{% csrf_token %}
+                            <form action="{% url 'service:update' service.id %}">{% csrf_token %}
                                 <button type="submit">Update</button>
                             </form>
                         </td>
