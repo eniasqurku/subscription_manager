@@ -7,7 +7,7 @@ from service.models import Service
 class Subscription(models.Model):
     class Meta:
         verbose_name = 'Subscription'
-        verbose_name_plural = 'Subscription'
+        verbose_name_plural = 'Subscriptions'
         db_table = 'subscription'
 
     start_date = models.DateField()
