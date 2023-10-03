@@ -1,11 +1,10 @@
 from django.db import models
 
 
-# Create your models here.
 class Customer(models.Model):
     class Meta:
-        verbose_name = 'Klient'
-        verbose_name_plural = 'Klientët'
+        verbose_name = 'Client'
+        verbose_name_plural = 'Clients'
         db_table = 'customer'
 
     name = models.CharField(max_length=50)

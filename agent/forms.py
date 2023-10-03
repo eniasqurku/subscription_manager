@@ -1,4 +1,4 @@
-from django.forms import Form, ModelForm
+from django.forms import ModelForm
 
 from agent.models import Customer
 
@@ -6,4 +6,4 @@ from agent.models import Customer
 class CustomerForm(ModelForm):
     class Meta:
         model = Customer
-        exclude = ['deleted']
+        fields = "__all__"

@@ -1,5 +1,51 @@
-{% extends 'base.html' %}
+{% extends 'navigation.html' %}
+{% block sub-content %}
+    <!DOCTYPE html>
+    <html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Welcome to Our Website</title>
+        <style>
+            body {
+                font-family: Arial, sans-serif;
+                text-align: center;
+                background-color: #f0f0f0;
+            }
 
-{% block content %}
-<h1>Welcome</h1>
+            header {
+                background-color: #007BFF;
+                color: #fff;
+                padding: 20px;
+            }
+
+            h1 {
+                font-size: 36px;
+            }
+
+            p {
+                font-size: 18px;
+                margin-bottom: 20px;
+            }
+
+            a {
+                text-decoration: none;
+                color: #007BFF;
+            }
+        </style>
+    </head>
+    <body>
+    <header>
+        <h1>Welcome to Our Website</h1>
+    </header>
+    <main>
+        <p>Thank you for visiting our website. We're excited to have you here!</p>
+        <p>Explore our <a href="#">services</a> or <a href="#">products</a>, and don't hesitate to <a href="#">contact
+            us</a> if you have any questions.</p>
+    </main>
+    <footer>
+        <p>&copy; 2023 Our Company</p>
+    </footer>
+    </body>
+    </html>
 {% endblock %}

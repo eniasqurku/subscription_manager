@@ -1,19 +1,18 @@
-from django.shortcuts import render
+from django.contrib.auth.mixins import LoginRequiredMixin
+from django.http import HttpResponseRedirect
 from django.urls import reverse_lazy
 from django.views.generic import ListView, DeleteView, CreateView, UpdateView
-from .models import Customer
+
 from .forms import CustomerForm
-from django.http import HttpResponseRedirect
+from .models import Customer
 
 
-# Create your views here.
-
-class CustomerListView(ListView):
-    template_name = 'customer/customer_list.html'
+class CustomerListView(LoginRequiredMixin, ListView):
+    template_name = 'customer/list.html'
     queryset = Customer.objects.all()
 
 
-class CustomerDeleteView(DeleteView):
+class CustomerDeleteView(LoginRequiredMixin, DeleteView):
     success_url = reverse_lazy('customer:list')
     model = Customer
 
@@ -26,15 +25,15 @@ class CustomerDeleteView(DeleteView):
             return HttpResponseRedirect(self.success_url)
 
 
-class CustomerUpdateView(UpdateView):
+class CustomerUpdateView(LoginRequiredMixin, UpdateView):
     success_url = reverse_lazy('customer:list')
     form_class = CustomerForm
     queryset = Customer.objects.all()
-    template_name = 'customer/update.html'
+    template_name = 'customer/form.html'
 
 
-class CustomerCreateView(CreateView):
+class CustomerCreateView(LoginRequiredMixin, CreateView):
     success_url = reverse_lazy('customer:list')
     form_class = CustomerForm
     queryset = Customer.objects.all()
-    template_name = 'customer/create.html'
+    template_name = 'customer/form.html'

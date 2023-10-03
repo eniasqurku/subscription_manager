@@ -1,0 +1,9 @@
+{% extends 'navigation.html' %}
+{% load crispy_forms_tags %}
+
+{% block sub-content %}
+    <form method="post" class="container my-3">{% csrf_token %}
+        {{ form|crispy }}
+        <input type="submit" value="Save" class="btn btn-primary">
+    </form>
+{% endblock %}
