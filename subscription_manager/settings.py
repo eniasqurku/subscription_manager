@@ -40,9 +40,19 @@ INSTALLED_APPS = [
     'subscription',
     'login',
     'rest_framework',
-    'rest_framework.authtoken'
-
+    'rest_framework.authtoken',
+    'drf_yasg',
 ]
+
+SWAGGER_SETTINGS = {
+    'SECURITY_DEFINITIONS': {
+        'Bearer': {
+            'type': 'apiKey',
+            'name': 'Authorization',
+            'in': 'header'
+        }
+    }
+}
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
