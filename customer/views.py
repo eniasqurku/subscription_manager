@@ -1,12 +1,9 @@
-from django.shortcuts import render
-from django.urls import reverse_lazy
-from .models import Customer
-from django.http import HttpResponseRedirect
 from rest_framework import generics
-from rest_framework.permissions import IsAdminUser, AllowAny
-from .serializers import CustomerSerializer
-from rest_framework.response import Response
 from rest_framework import status
+from rest_framework.response import Response
+
+from .models import Customer
+from .serializers import CustomerSerializer
 
 
 class CustomerCreateListView(generics.ListCreateAPIView):

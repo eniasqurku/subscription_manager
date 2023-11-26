@@ -1,8 +1,7 @@
-from django.shortcuts import render
-from django.urls import reverse_lazy
+from rest_framework import generics
+
 from .models import Subscription
 from .serializers import SubscriptionSerializer
-from rest_framework import generics
 
 
 class SubscriptionCreateListView(generics.ListCreateAPIView):
@@ -13,7 +12,3 @@ class SubscriptionCreateListView(generics.ListCreateAPIView):
 class SubscriptionUpdateDeleteView(generics.RetrieveUpdateDestroyAPIView):
     queryset = Subscription.objects.all()
     serializer_class = SubscriptionSerializer
-
-
-
-
