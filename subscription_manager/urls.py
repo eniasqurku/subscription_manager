@@ -17,14 +17,14 @@ from django.contrib import admin
 from django.contrib.auth.views import LoginView, logout_then_login
 from django.urls import path
 
-import agent.urls as customer_urls
+import customer.urls as customer_urls
 import service.urls as service_urls
 import subscription.urls as subscription_urls
 from home import views
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('', LoginView.as_view(template_name='agent/login.html'), name='login'),
+    path('', LoginView.as_view(template_name='login.html'), name='login'),
     path('home/', views.HomeView.as_view(), name='home'),
     path('logout/', logout_then_login, name='logout'),
 

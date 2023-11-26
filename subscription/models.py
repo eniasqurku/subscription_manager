@@ -1,6 +1,6 @@
 from django.db import models
 
-from agent.models import Customer
+from customer.models import Customer
 from service.models import Service
 
 
@@ -16,3 +16,6 @@ class Subscription(models.Model):
     date_last_updated = models.DateTimeField(auto_now=True)
     customer = models.ForeignKey(Customer, related_name='subscriptions', on_delete=models.PROTECT, null=True)
     service = models.ForeignKey(Service, related_name='subscriptions', on_delete=models.PROTECT)
+
+    def __str__(self):
+        return f'{self.service} - {self.customer}'

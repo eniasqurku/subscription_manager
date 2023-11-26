@@ -7,7 +7,7 @@ from .models import Subscription
 
 
 class SubscriptionListView(LoginRequiredMixin, ListView):
-    template_name = 'subscription/subscription_list1.html'
+    template_name = 'subscription/list.html'
     queryset = Subscription.objects.all()
 
 
