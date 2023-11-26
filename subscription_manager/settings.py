@@ -38,7 +38,6 @@ INSTALLED_APPS = [
     'customer',
     'service',
     'subscription',
-    'login',
     'rest_framework',
     'rest_framework.authtoken',
     'drf_yasg',
